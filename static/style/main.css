@@ -18,6 +18,7 @@ body {
   margin-left: 200px;
   margin-right: 200px;
   transform: translate(-1%, 65%);
+  cursor: url("/static/images/hole.png"), pointer;
 }
 
 .row {
