@@ -17,11 +17,22 @@ body {
   margin-bottom: 0%;
   margin-left: 200px;
   margin-right: 200px;
-   transform: translate(-1%, 70%);
+  transform: translate(-1%, 65%);
 }
 
 .row {
   flex-direction: row;
   flex-wrap: wrap;
   display: flex;
+}
+
+.mole-pic {
+  position: relative;
+  z-index: 3;
+  left: -150px;
+}
+
+.hole-pic {
+  position: relative;
+  z-index: 1;
 }
