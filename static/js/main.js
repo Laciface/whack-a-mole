@@ -1,9 +1,10 @@
 window.onload = molesMoveLeft
 
 function molesMoveLeft() {
-    let moles = document.querySelectorAll('.mole-pic')
+    setTimeout(function () {
+        let moles = document.querySelectorAll('.mole-pic')
     for (let mole of moles){
-        let MoleWidth = mole.style.width
-        MoleWidth -= 50
+        mole.style.visibility = 'visible'
     }
+    },3000)
 }

@@ -30,6 +30,7 @@ body {
   position: relative;
   z-index: 3;
   left: -150px;
+  visibility: hidden;
 }
 
 .hole-pic {
