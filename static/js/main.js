@@ -4,10 +4,13 @@ let cursorDistance = 3
 let maxId = 15
 let minId = 1
 
+
 function initGame() {
     moleAppear();
     hammerMove();
-    hammerRotate()
+    hammerRotate();
+    // TimeCount();
+    gainPoints();
 }
 
 
@@ -50,14 +53,35 @@ function hammerRotate(){
     let hammer = document.getElementById('hammer');
     hammer.addEventListener('mousedown', function () {
         hammer.style.transform = "rotate(-90deg)"
-
     })
     hammer.addEventListener('mouseup', function () {
         hammer.style.transform = "rotate(-20deg)"
     })
-    hammerRotate()
 }
 
 function TimeCount() {
+    let gameContainer = document.querySelector('.game');
+    let time = document.getElementById('time');
+    gameContainer.addEventListener('mouseenter', function () {
+        let timeLeft = parseInt(time.textContent)
+        for (let i = 0; i < 10; i++) {
+            setTimeout(function () {
+                timeLeft -= 1
+            },1000)
+        }
+    })
+}
 
+function start() {
+// visszaszámlálás 3tól
+}
+
+function gainPoints() {
+    let moles = document.querySelectorAll('.mole-pic');
+    let points = document.getElementById('points')
+    for (let mole of moles) {
+        mole.addEventListener('click', function () {
+            points.textContent = parseInt(points.textContent) + 1
+        })
+    }
 }
