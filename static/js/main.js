@@ -1,18 +1,23 @@
-// window.onload = molesMoveLeft
+let minTime = 500
+let maxTime = 1500
+let cursorDistance = 3
+let maxId = 15
+let minId = 1
 
-function molesMoveLeft() {
-    setTimeout(function () {
-        let moles = document.querySelectorAll('.mole-pic')
-        for (let mole of moles) {
-            mole.style.visibility = 'visible'
-        }
-    }, 3000)
+function initGame() {
+    moleAppear();
+    hammerMove();
+
 }
 
 
-hammerThirdTry()
 
-function hammerThirdTry() {
+
+initGame()
+
+
+
+function hammerMove() {
 
     let gameContainer = document.querySelector('.game');
     gameContainer.onmousemove = applyHammerPointer
@@ -20,23 +25,25 @@ function hammerThirdTry() {
     let hammer = document.querySelector('#hammer')
 
     function applyHammerPointer(event) {
-        hammer.style.left = event.clientX - (hammer.offsetWidth / 3) + 'px'
-        hammer.style.top = event.clientY - (hammer.offsetHeight / 3) + 'px'
+        hammer.style.left = event.clientX - (hammer.offsetWidth / cursorDistance) + 'px'
+        hammer.style.top = event.clientY - (hammer.offsetHeight / cursorDistance) + 'px'
     }
 }
 
-function randomMole() {
+
+
+function moleAppear() {
+    let randomTime = Math.floor(Math.random() * (maxTime - minTime + 1) + minTime)
     let moles = document.querySelectorAll('.mole-pic');
-    let moleId = Math.floor(Math.random() * 15) + 1
+    let moleId = Math.floor(Math.random() * maxId) + minId
     for (let mole of moles) {
         if (parseInt(mole.parentNode.id) === moleId) {
             mole.style.visibility = 'visible'
             setTimeout(function () {
                 mole.style.visibility = 'hidden'
-                randomMole()
-            }, 2000)
+                moleAppear()
+            }, randomTime)
         }
     }
 }
 
-randomMole()
