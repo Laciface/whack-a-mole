@@ -11,10 +11,7 @@ function initGame() {
 }
 
 
-
-
 initGame()
-
 
 
 function hammerMove() {
@@ -36,6 +33,7 @@ function moleAppear() {
     let randomTime = Math.floor(Math.random() * (maxTime - minTime + 1) + minTime)
     let moles = document.querySelectorAll('.mole-pic');
     let moleId = Math.floor(Math.random() * maxId) + minId
+    console.log(moleId)
     for (let mole of moles) {
         if (parseInt(mole.parentNode.id) === moleId) {
             mole.style.visibility = 'visible'

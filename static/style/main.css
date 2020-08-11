@@ -58,7 +58,7 @@ body {
 .points {
   font-size: 50px;
   top: 5%;
-  font-family: BlinkMacSystemFont
+  font-family: BlinkMacSystemFont;
   display: flex;
   float: right;
   text-align: right;
