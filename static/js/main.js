@@ -7,7 +7,7 @@ let minId = 1
 function initGame() {
     moleAppear();
     hammerMove();
-
+    hammerRotate()
 }
 
 
@@ -45,3 +45,19 @@ function moleAppear() {
     }
 }
 
+
+function hammerRotate(){
+    let hammer = document.getElementById('hammer');
+    hammer.addEventListener('mousedown', function () {
+        hammer.style.transform = "rotate(-90deg)"
+
+    })
+    hammer.addEventListener('mouseup', function () {
+        hammer.style.transform = "rotate(-20deg)"
+    })
+    hammerRotate()
+}
+
+function TimeCount() {
+
+}
