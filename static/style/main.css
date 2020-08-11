@@ -4,6 +4,7 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  cursor: none;
 }
 
 .hole-container {
@@ -18,7 +19,7 @@ body {
   margin-left: 200px;
   margin-right: 200px;
   transform: translate(-1%, 65%);
-  cursor: url("/static/images/hole.png"), pointer;
+  cursor: none;
 }
 
 .row {
@@ -37,4 +38,11 @@ body {
 .hole-pic {
   position: relative;
   z-index: 1;
+}
+
+#hammer {
+  position: absolute;
+  height: 100px;
+  width: 100px;
+  z-index: 4;
 }
