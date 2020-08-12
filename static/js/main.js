@@ -12,7 +12,6 @@ function initGame() {
     TimeCount();
     gainPoints();
     // hammerCursor();
-    //soundBoard();
     start();
 }
 
@@ -101,7 +100,7 @@ function gainPoints() {
     let tripleSound = new Audio("/static/sound/triple.mp3");
     let inhumanSound = new Audio("/static/sound/inhuman.mp3");
     let airhornSound = new Audio("/static/sound/airhorn.mp3");
-    let womboSound = new Audio("/static/sound/wombo.mp3")
+    let nooneSound = new Audio("/static/sound/noone.mp3")
 
     for (let mole of moles) {
         mole.addEventListener('click', function () {
@@ -113,7 +112,7 @@ function gainPoints() {
             } else if (parseInt(points.textContent) === 9)
                 airhornSound.play()
             else if (parseInt(points.textContent) === 12) {
-                womboSound.play()
+                nooneSound.play()
             }
 
         })
