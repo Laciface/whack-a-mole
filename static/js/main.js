@@ -101,10 +101,12 @@ function gainPoints() {
     let inhumanSound = new Audio("/static/sound/inhuman.mp3");
     let airhornSound = new Audio("/static/sound/airhorn.mp3");
     let nooneSound = new Audio("/static/sound/noone.mp3")
+    let screamSound = new Audio("/static/sound/scream.mp3")
 
     for (let mole of moles) {
         mole.addEventListener('click', function () {
             points.textContent = parseInt(points.textContent) + 1
+            screamSound.play()
             if (parseInt(points.textContent) === 3) {
                 tripleSound.play()
             } else if (parseInt(points.textContent) === 6) {
