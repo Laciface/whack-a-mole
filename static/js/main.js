@@ -37,26 +37,23 @@ function hammerMove() {
 }
 
 
-
 function moleAppear() {
-        let randomTime = Math.floor(Math.random() * (maxTime - minTime + 1) + minTime)
-        let moles = document.querySelectorAll('.mole-pic');
-        let moleId = Math.floor(Math.random() * maxId) + minId
-        for (let mole of moles) {
-            if (parseInt(mole.parentNode.id) === moleId) {
-                mole.style.visibility = 'visible'
-                setTimeout(function () {
-                    mole.style.visibility = 'hidden'
-                    moleAppear()
-                }, randomTime)
-            }
+    let randomTime = Math.floor(Math.random() * (maxTime - minTime + 1) + minTime)
+    let moles = document.querySelectorAll('.mole-pic');
+    let moleId = Math.floor(Math.random() * maxId) + minId
+    for (let mole of moles) {
+        if (parseInt(mole.parentNode.id) === moleId) {
+            mole.style.visibility = 'visible'
+            setTimeout(function () {
+                mole.style.visibility = 'hidden'
+                moleAppear()
+            }, randomTime)
         }
+    }
 }
 
 
-
-
-function hammerRotate(){
+function hammerRotate() {
     let hammer = document.getElementById('hammer');
     hammer.addEventListener('mousedown', function () {
         hammer.style.transform = "rotate(-90deg)"
@@ -73,9 +70,9 @@ function TimeCount() {
     button.addEventListener('click', function () {
         let timeLeft = parseInt(time.textContent)
         let count = setInterval(function () {
-            if (timeLeft > 0){
+            if (timeLeft > 0) {
                 timeLeft -= 1
-            time.textContent = timeLeft
+                time.textContent = timeLeft
             } else {
                 clearInterval(count)
                 // let moles = document.querySelectorAll('.mole-pic');
@@ -103,5 +100,30 @@ function gainPoints() {
         mole.addEventListener('click', function () {
             points.textContent = parseInt(points.textContent) + 1
         })
+    }
+}
+
+/* Sound test 1
+function hammerSound() {
+    const hammerSmash = new Audio("/static/sound/hammer.mp3");
+    hammerSmash.addEventListener('click', function () {
+        hammerSmash.play()
+    })
+}*/
+
+/*Sound test 2*/
+let gameField = document.getElementById("game-field");
+gameField.addEventListener("click", playSound);
+
+let sound = new Audio();
+sound.src = "/static/sound/hammer.mp3";
+sound.oncanplaythrough = function () {
+    sound.readyToRock = true;
+}
+
+function playSound() {
+    if(sound && sound.readyToRock){
+        sound.currentTime = 0;
+        sound.play();
     }
 }
