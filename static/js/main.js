@@ -11,6 +11,7 @@ function initGame() {
     TimeCount();
     gainPoints();
     // hammerCursor();
+    soundBoard();
     start();
 }
 
@@ -96,9 +97,25 @@ function start() {
 function gainPoints() {
     let moles = document.querySelectorAll('.mole-pic');
     let points = document.getElementById('points')
+
+    let tripleSound = new Audio("/static/sound/triple.mp3");
+    let inhumanSound = new Audio("/static/sound/inhuman.mp3");
+    let airhornSound = new Audio("/static/sound/airhorn.mp3");
+    let womboSound = new Audio("/static/sound/wombo.mp3")
+
     for (let mole of moles) {
         mole.addEventListener('click', function () {
             points.textContent = parseInt(points.textContent) + 1
+            if (parseInt(points.textContent) === 3) {
+                tripleSound.play()
+            } else if (parseInt(points.textContent) === 6) {
+                inhumanSound.play()
+            } else if (parseInt(points.textContent) === 9)
+                airhornSound.play()
+            else if (parseInt(points.textContent) === 12) {
+                womboSound.play()
+            }
+
         })
     }
 }
@@ -122,7 +139,7 @@ sound.oncanplaythrough = function () {
 }
 
 function playSound() {
-    if(sound && sound.readyToRock){
+    if (sound && sound.readyToRock) {
         sound.currentTime = 0;
         sound.play();
     }
