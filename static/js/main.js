@@ -11,7 +11,6 @@ function initGame() {
     TimeCount();
     gainPoints();
     // hammerCursor();
-    soundBoard();
     start();
 }
 
