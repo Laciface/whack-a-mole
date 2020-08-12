@@ -4,7 +4,6 @@ let cursorDistance = 3
 let maxId = 15
 let minId = 1
 
-
 function initGame() {
     // moleAppear();
     // hammerMove();
@@ -40,18 +39,18 @@ function hammerMove() {
 
 
 function moleAppear() {
-    let randomTime = Math.floor(Math.random() * (maxTime - minTime + 1) + minTime)
-    let moles = document.querySelectorAll('.mole-pic');
-    let moleId = Math.floor(Math.random() * maxId) + minId
-    for (let mole of moles) {
-        if (parseInt(mole.parentNode.id) === moleId) {
-            mole.style.visibility = 'visible'
-            setTimeout(function () {
-                mole.style.visibility = 'hidden'
-                moleAppear()
-            }, randomTime)
+        let randomTime = Math.floor(Math.random() * (maxTime - minTime + 1) + minTime)
+        let moles = document.querySelectorAll('.mole-pic');
+        let moleId = Math.floor(Math.random() * maxId) + minId
+        for (let mole of moles) {
+            if (parseInt(mole.parentNode.id) === moleId) {
+                mole.style.visibility = 'visible'
+                setTimeout(function () {
+                    mole.style.visibility = 'hidden'
+                    moleAppear()
+                }, randomTime)
+            }
         }
-    }
 }
 
 
@@ -66,7 +65,6 @@ function hammerRotate(){
 }
 
 function TimeCount() {
-    // let gameContainer = document.querySelector('.game');
     let points = document.getElementById('points')
     let button = document.querySelector('.btn.btn-primary')
     let time = document.getElementById('time');
@@ -78,11 +76,14 @@ function TimeCount() {
             time.textContent = timeLeft
             } else {
                 clearInterval(count)
+                let moles = document.querySelectorAll('.mole-pic');
+                for (let mole of moles) {
+                    mole.style.visibility = 'hidden'
+                }
                 alert('Your score is: ' + points.textContent)
             }
 
         }, 1000)
-        // clearInterval(count)
     })
 }
 
