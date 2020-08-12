@@ -4,7 +4,8 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  cursor: none;
+  cursor: url("../images/hammer.png"), default;
+
 }
 
 .hole-container {
@@ -19,7 +20,6 @@ body {
   margin-left: 200px;
   margin-right: 200px;
   transform: translate(-1%, 65%);
-  cursor: none;
 }
 
 .row {
@@ -69,4 +69,12 @@ body {
 .time-container{
   position: relative;
   display: block;
+}
+
+#start-button {
+  position: fixed;
+  top: 18%;
+  left: 50%;
+  margin-top: -50px;
+  margin-left: -100px;
 }

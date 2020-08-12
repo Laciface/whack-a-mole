@@ -6,15 +6,22 @@ let minId = 1
 
 
 function initGame() {
-    moleAppear();
-    hammerMove();
-    hammerRotate();
-    // TimeCount();
+    // moleAppear();
+    // hammerMove();
+    // hammerRotate();
+    TimeCount();
     gainPoints();
+    hammerCursor();
+    start();
 }
 
 
 initGame()
+
+function hammerCursor() {
+    let gameContainer = document.querySelector('.game')
+    gameContainer.style.cursor = "url('../images/hammer.png'), auto";
+}
 
 
 function hammerMove() {
@@ -36,7 +43,6 @@ function moleAppear() {
     let randomTime = Math.floor(Math.random() * (maxTime - minTime + 1) + minTime)
     let moles = document.querySelectorAll('.mole-pic');
     let moleId = Math.floor(Math.random() * maxId) + minId
-    console.log(moleId)
     for (let mole of moles) {
         if (parseInt(mole.parentNode.id) === moleId) {
             mole.style.visibility = 'visible'
@@ -60,20 +66,31 @@ function hammerRotate(){
 }
 
 function TimeCount() {
-    let gameContainer = document.querySelector('.game');
+    // let gameContainer = document.querySelector('.game');
+    let points = document.getElementById('points')
+    let button = document.querySelector('.btn.btn-primary')
     let time = document.getElementById('time');
-    gameContainer.addEventListener('mouseenter', function () {
+    button.addEventListener('click', function () {
         let timeLeft = parseInt(time.textContent)
-        for (let i = 0; i < 10; i++) {
-            setTimeout(function () {
+        let count = setInterval(function () {
+            if (timeLeft > 0){
                 timeLeft -= 1
-            },1000)
-        }
+            time.textContent = timeLeft
+            } else {
+                clearInterval(count)
+                alert('Your score is: ' + points.textContent)
+            }
+
+        }, 1000)
+        // clearInterval(count)
     })
 }
 
 function start() {
-// visszaszámlálás 3tól
+    let button = document.querySelector('.btn.btn-primary')
+    button.addEventListener('click', function () {
+        moleAppear()
+    })
 }
 
 function gainPoints() {
