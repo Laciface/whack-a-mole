@@ -10,7 +10,7 @@ function initGame() {
     // hammerRotate();
     TimeCount();
     gainPoints();
-    hammerCursor();
+    // hammerCursor();
     start();
 }
 
@@ -54,6 +54,8 @@ function moleAppear() {
 }
 
 
+
+
 function hammerRotate(){
     let hammer = document.getElementById('hammer');
     hammer.addEventListener('mousedown', function () {
@@ -76,10 +78,10 @@ function TimeCount() {
             time.textContent = timeLeft
             } else {
                 clearInterval(count)
-                let moles = document.querySelectorAll('.mole-pic');
-                for (let mole of moles) {
-                    mole.style.visibility = 'hidden'
-                }
+                // let moles = document.querySelectorAll('.mole-pic');
+                // for (let mole of moles) {
+                //     mole.style.visibility = 'hidden'
+                // }
                 alert('Your score is: ' + points.textContent)
             }
 

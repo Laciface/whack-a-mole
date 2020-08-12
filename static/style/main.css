@@ -4,7 +4,7 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  cursor: url("../images/hammer.png"), default;
+  cursor: url("/static/images/hammer2.png"), auto;
 
 }
 
