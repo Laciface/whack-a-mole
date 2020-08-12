@@ -6,12 +6,8 @@ let minId = 1
 let game = true
 
 function initGame() {
-    // moleAppear();
-    // hammerMove();
-    // hammerRotate();
     TimeCount();
     gainPoints();
-    // hammerCursor();
     start();
 }
 
