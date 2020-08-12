@@ -66,7 +66,7 @@ function hammerRotate(){
 
 function TimeCount() {
     let points = document.getElementById('points')
-    let button = document.querySelector('.btn.btn-primary')
+    let button = document.querySelector('.btn.btn-primary.btn-lg')
     let time = document.getElementById('time');
     button.addEventListener('click', function () {
         let timeLeft = parseInt(time.textContent)
@@ -88,7 +88,7 @@ function TimeCount() {
 }
 
 function start() {
-    let button = document.querySelector('.btn.btn-primary')
+    let button = document.querySelector('.btn.btn-primary.btn-lg')
     button.addEventListener('click', function () {
         moleAppear()
     })
