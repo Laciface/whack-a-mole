@@ -5,6 +5,13 @@ let maxId = 15
 let minId = 1
 let game = true
 
+let tripleSound = new Audio("/static/sound/triple.mp3");
+let inhumanSound = new Audio("/static/sound/inhuman.mp3");
+let airhornSound = new Audio("/static/sound/airhorn.mp3");
+let nooneSound = new Audio("/static/sound/noone.mp3")
+let screamSound = new Audio("/static/sound/scream.mp3")
+let timerSound = new Audio("/static/sound/timer.mp3")
+
 function initGame() {
     TimeCount();
     gainPoints();
@@ -14,23 +21,21 @@ function initGame() {
 
 initGame()
 
-function hammerCursor() {
-    let gameContainer = document.querySelector('.game')
-    gameContainer.style.cursor = "url('../images/hammer.png'), auto";
-}
-
-
-function hammerMove() {
-
-    let gameContainer = document.querySelector('.game');
-    gameContainer.onmousemove = applyHammerPointer
-
-    let hammer = document.querySelector('#hammer')
-
-    function applyHammerPointer(event) {
-        hammer.style.left = event.clientX - (hammer.offsetWidth / cursorDistance) + 'px'
-        hammer.style.top = event.clientY - (hammer.offsetHeight / cursorDistance) + 'px'
-    }
+function start() {
+    let button = document.querySelector('.btn.btn-primary.btn-lg')
+    let level = document.querySelector('.level')
+    button.addEventListener('click', function () {
+        if (level.textContent === 'Warming up') {
+            level.textContent = 0
+        } else {
+            let levelUp = parseInt(level.textContent)
+            levelUp += 1
+            level.textContent = levelUp
+        }
+        moleAppear()
+        button.style.visibility = 'hidden'
+        button.innerHTML = 'Next level'
+    })
 }
 
 
@@ -48,19 +53,11 @@ function moleAppear() {
                 }, randomTime)
             }
         }
+    } else {
+        return 'Game over'
     }
 }
 
-
-function hammerRotate() {
-    let hammer = document.getElementById('hammer');
-    hammer.addEventListener('mousedown', function () {
-        hammer.style.transform = "rotate(-90deg)"
-    })
-    hammer.addEventListener('mouseup', function () {
-        hammer.style.transform = "rotate(-20deg)"
-    })
-}
 
 function TimeCount() {
     let points = document.getElementById('points')
@@ -69,35 +66,29 @@ function TimeCount() {
     button.addEventListener('click', function () {
         let timeLeft = parseInt(time.textContent)
         let count = setInterval(function () {
-            if (timeLeft > 0) {
+            if (timeLeft === 5) {
+                timerSound.play()
+                timeLeft -= 1
+                time.textContent = timeLeft
+            } else if ( timeLeft > 0){
                 timeLeft -= 1
                 time.textContent = timeLeft
             } else {
                 clearInterval(count)
                 alert('Your score is: ' + points.textContent)
                 game = false
+                playAgain(button, time)
             }
 
         }, 1000)
     })
 }
 
-function start() {
-    let button = document.querySelector('.btn.btn-primary.btn-lg')
-    button.addEventListener('click', function () {
-        moleAppear()
-    })
-}
+
 
 function gainPoints() {
     let moles = document.querySelectorAll('.mole-pic');
     let points = document.getElementById('points')
-
-    let tripleSound = new Audio("/static/sound/triple.mp3");
-    let inhumanSound = new Audio("/static/sound/inhuman.mp3");
-    let airhornSound = new Audio("/static/sound/airhorn.mp3");
-    let nooneSound = new Audio("/static/sound/noone.mp3")
-    let screamSound = new Audio("/static/sound/scream.mp3")
 
     for (let mole of moles) {
         mole.addEventListener('click', function () {
@@ -131,4 +122,25 @@ function playSound() {
         sound.currentTime = 0;
         sound.play();
     }
+}
+
+// function countDown() {
+//     let modal = document.getElementById('modal');
+//     let count = 3
+//     setInterval(function () {
+//         modal.textContent = count
+//         count -= 1
+//     })
+// }
+
+function playAgain(button, time) {
+    let points = document.getElementById('points')
+    button.style.visibility = 'visible'
+    time.textContent = 30
+    button.addEventListener('click', function () {
+        game = true
+        points.textContent = 0
+        moleAppear()
+    })
+
 }

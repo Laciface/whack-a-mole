@@ -49,6 +49,7 @@ body {
 }
 
 .timer {
+  font-weight: bold;
   position: absolute;
   font-size: 50px;
   display: inline-block;
@@ -58,6 +59,7 @@ body {
 
 .points {
   font-size: 50px;
+  font-weight: bold;
   top: 5%;
   font-family: BlinkMacSystemFont;
   display: flex;
@@ -74,9 +76,30 @@ body {
 
 #start-button {
   position: fixed;
-  top: 18%;
+  top: 30%;
   left: 50%;
   margin-top: -50px;
   margin-left: -100px;
   font-size: 50px;
+}
+
+.title {
+  position: fixed;
+  top: 10%;
+  left: 50%;
+  margin-top: -50px;
+  margin-left: -350px;
+  font-size: 100px;
+  font-weight: bold;
+  font-family: BlinkMacSystemFont
+}
+
+.level-style {
+  font-weight: bold;
+  display: inline;
+  position: fixed;
+  top: 20%;
+  left: 0%;
+  font-size: 30px;
+  font-family: BlinkMacSystemFont;
 }
